@@ -1,6 +1,7 @@
 package siam.go.mint.num.siamdailynew.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 
 import siam.go.mint.num.siamdailynew.R;
 import siam.go.mint.num.siamdailynew.manage.MyAlert;
@@ -20,6 +22,9 @@ public class SignUpFragment extends Fragment {
 
     //Explicit
     private String nameString, surnameString, emailString, userString, passwordString, gerderString, facultyString, confirmString;
+
+    private boolean aBoolean = true;
+
 
 
     @Nullable
@@ -42,7 +47,33 @@ public class SignUpFragment extends Fragment {
         //Save Controller
         saveController();
 
+        //Gender Controller
+        genderController();
+
+
     } // onActivityCreate
+
+
+
+    private void genderController() {
+        RadioGroup radioGroup = getView().findViewById(R.id.ragGender);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                aBoolean = false;
+                switch (i) {  //chk ว่าได้เลือกเพศไหม
+                    case R.id.radMale:
+                        gerderString = "Male";
+                        break;
+                    case R.id.radFemale:
+                        gerderString = "Female";
+                        break;
+                }
+            }
+        });
+    }
+
+
 
     private void saveController() {
         ImageView imageView = getView().findViewById(R.id.imvSave);
@@ -74,7 +105,15 @@ public class SignUpFragment extends Fragment {
                     MyAlert myAlert = new MyAlert(getActivity());
                     myAlert.myDialog(getResources().getString(R.string.have_space),
                             getResources().getString(R.string.message_have_space));
-
+                }else if (!passwordString.equals(confirmString)){
+                    //Not match
+                    MyAlert myAlert = new MyAlert(getActivity());
+                    myAlert.myDialog(getString(R.string.title_not_math),
+                            getString(R.string.mess_not_mate));
+                }else if(aBoolean){
+                    //non choose
+                    MyAlert myAlert = new MyAlert(getActivity());
+                    myAlert.myDialog(getString(R.string.title_non_choose),getString(R.string.mess_non_choose));
                 }
 
             }   // onClick
