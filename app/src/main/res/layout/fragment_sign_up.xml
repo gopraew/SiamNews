@@ -18,6 +18,7 @@
 
             <!--Back-->
             <ImageView
+                android:id="@+id/imvBack"
                 android:src="@mipmap/ic_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -34,6 +35,7 @@
 
             <!--Save-->
             <ImageView
+                android:id="@+id/imvSave"
                 android:src="@mipmap/ic_save"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
@@ -62,6 +64,7 @@
 
             <!--Name-->
             <EditText
+                android:id="@+id/edtName"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -72,6 +75,7 @@
 
             <!--SurName-->
             <EditText
+                android:id="@+id/edtSurName"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -88,18 +92,22 @@
                 android:textSize="@dimen/h1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <RadioGroup
+                android:id="@+id/ragGender"
                 android:padding="@dimen/padding"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!--Male-->
                 <RadioButton
+                    android:id="@+id/radMale"
                     android:text="@string/male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <!--Female-->
                 <RadioButton
+                    android:id="@+id/radFemale"
                     android:layout_marginLeft="@dimen/margin"
                     android:text="@string/female"
                     android:layout_width="wrap_content"
@@ -109,6 +117,7 @@
 
             <!--email-->
             <EditText
+                android:id="@+id/edtEmail"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -129,6 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Spinner
+                android:id="@+id/spnFaculty"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -141,6 +151,7 @@
 
             <!--User-->
             <EditText
+                android:id="@+id/edtUser"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
@@ -151,6 +162,7 @@
 
             <!--Password-->
             <EditText
+                android:id="@+id/edtPassword"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
