@@ -5,7 +5,9 @@
     <ScrollView
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <!--Content-->
         <LinearLayout
@@ -29,6 +31,7 @@
                 android:layout_height="@dimen/icon" />
             <!--User-->
             <EditText
+                android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/edtUser"
@@ -38,11 +41,14 @@
                 android:layout_height="wrap_content" />
             <!--Password-->
             <EditText
+                android:layout_marginTop="@dimen/padding"
+                android:layout_marginBottom="@dimen/padding"
+                android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/edtPassword"
                 android:inputType="textPassword"
-                android:hint="@string/password"
+                android:hint="@string/password2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <!--New Regi-->
@@ -64,6 +70,7 @@
 
     <!--Button Login -->
     <Button
+        android:background="@drawable/bg_edittext"
         android:id="@+id/btnLogin"
         android:text="Login"
         android:layout_width="match_parent"

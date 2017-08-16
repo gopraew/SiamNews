@@ -1,11 +1,23 @@
 <resources>
     <string name="app_name">Siam DailyNew</string>
-    <string name="user">User :</string>
-    <string name="password">password</string>
-    <string name="name">Name :</string>
-    <string name="division">คณะ</string>
-    <string name="male">Male</string>
-    <string name="gender">Gender</string>
-    <string name="female">Female</string>
+
+    <!--สมัครสมาชิก-->
+    <string name="user">ชื่อบัญชีผู้ใช้ :</string>
+    <string name="password2">รหัสผ่าน :</string>
+    <string name="passwordcf">ยืนยันรหัสผ่าน :</string>
+    <string name="name">ชื่อ :</string>
+    <string name="surname">นามสกุล :</string>
+    <string name="email">อีเมลล์ :</string>
+    <string name="faculty">คณะ</string>
+    <string name="male">ชาย</string>
+    <string name="gender">เพศ</string>
+    <string name="female">หญิง</string>
+
+
+
+
+    <!--แจ้งเตือน-->
+    <string name="have_space">Have Space</string>
+    <string name="message_have_space">Please Fill All every blank</string>
 
 </resources>

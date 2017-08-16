@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import siam.go.mint.num.siamdailynew.R;
+import siam.go.mint.num.siamdailynew.manage.MyAlert;
 
 /**
  * Created by Tong on 15/8/2560.
@@ -58,9 +59,14 @@ public class MainFragment extends Fragment{
                 String passwordStrig = passwordEditText.getText().toString().trim();
 
                 //การเช็ค Space
-                if (userEditText.equals("") || passwordEditText.equals("")) {
+                if (userString.equals("") || passwordStrig.equals("")) {
                     // Have Space
                     Log.d("15Aug", "Have Space");
+
+                    //Call MyAlert
+                    MyAlert myAlert = new MyAlert(getActivity());
+                    myAlert.myDialog(getString(R.string.have_space), getString(R.string.message_have_space));
+
                 } else {
                     // No Space
                     Log.d("15Aug", "No Space");
