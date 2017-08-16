@@ -18,6 +18,6 @@
 
     <!--แจ้งเตือน-->
     <string name="have_space">Have Space</string>
-    <string name="message_have_space">Please Fill All every blank</string>
+    <string name="message_have_space">กรุณากรอกข้อมูล</string>
 
 </resources>

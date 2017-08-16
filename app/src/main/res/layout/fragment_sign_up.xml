@@ -166,17 +166,18 @@
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:hint="@string/password2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <!--confirm Password-->
             <EditText
+                android:id="@+id/edtConfirm"
                 android:background="@drawable/bg_edittext"
                 android:textColorHint="@color/colorPrimaryLight"
                 android:textColor="@color/colorPrimaryDark"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:hint="@string/passwordcf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
