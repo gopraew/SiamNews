@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import siam.go.mint.num.siamdailynew.R;
 import siam.go.mint.num.siamdailynew.manage.MyAlert;
@@ -50,9 +51,20 @@ public class SignUpFragment extends Fragment {
         //Gender Controller
         genderController();
 
+        //Faculty Controller
+        facultyController();
+
 
     } // onActivityCreate
 
+
+
+
+    private void facultyController() {
+        Spinner spinner = getView().findViewById(R.id.spnFaculty);
+        //String[]strings=new String[]{};
+
+    }
 
 
     private void genderController() {
