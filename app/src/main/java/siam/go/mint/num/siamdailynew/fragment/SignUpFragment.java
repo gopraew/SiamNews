@@ -22,6 +22,7 @@ import siam.go.mint.num.siamdailynew.R;
 import siam.go.mint.num.siamdailynew.manage.GetAllData;
 import siam.go.mint.num.siamdailynew.manage.MyAlert;
 import siam.go.mint.num.siamdailynew.manage.MyConstant;
+import siam.go.mint.num.siamdailynew.manage.PostNewMember;
 
 /**
  * Created by Tong on 15/8/2560.
@@ -85,8 +86,11 @@ public class SignUpFragment extends Fragment {
 
             JSONArray jsonArray = new JSONArray(strJSoN);
             final String[] facultyStrings = new String[jsonArray.length()];  //จำนวน record ตัวแปรต้องเป็น arr
+            final String[] idStrings = new  String[jsonArray.length()];
             for (int i=0; i<jsonArray.length(); i+=1 ){
                 JSONObject jsonObject = jsonArray.getJSONObject(i); //เป็นตัวชี้
+                //ตัวแปร
+                idStrings[i]=jsonObject.getString("fd_id");
                 facultyStrings[i] = jsonObject.getString("fd_nameth");
                 Log.d(tag, "faculty[" + i + "] ==>" + facultyStrings[i]);
             }  //for
@@ -101,13 +105,13 @@ public class SignUpFragment extends Fragment {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     //////////////////////////////
-                    facultyString = facultyStrings[i];
+                    facultyString = idStrings[i];
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
                     //////////////////////////////
-                    facultyString = facultyStrings[0];
+                    facultyString = idStrings[0];
                 }
             });
 
@@ -200,7 +204,31 @@ public class SignUpFragment extends Fragment {
         Log.d(tag, userString);
         Log.d(tag, passwordString);
 
-    }
+        MyConstant myConstant = new MyConstant();
+        //String[] columnStrings = myConstant.getColumnMemberStrings();
+
+        try {
+            PostNewMember postNewMember = new PostNewMember(getActivity());
+            postNewMember.execute(nameString,surnameString,gerderString,
+                    emailString,userString,passwordString,facultyString, myConstant.getUrlAddmember() );
+
+            String result = postNewMember.get();
+            Log.d(tag,"Result ==> " +result);
+
+            if (Boolean.parseBoolean(result)) {
+                getActivity().getSupportFragmentManager()
+                        .popBackStack(); //ปิดแล้วกลับไปหน้าแรก
+            }else{
+                MyAlert myAlert = new MyAlert(getActivity());
+                myAlert.myDialog("Cannot upload","Please try again");
+            }
+
+        }catch (Exception e){
+            Log.d(tag, "e upload ==>" + e.toString());
+
+        }
+
+    }  //upload
 
 
     //สร้าง method
