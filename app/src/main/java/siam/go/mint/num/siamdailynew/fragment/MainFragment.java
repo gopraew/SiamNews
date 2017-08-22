@@ -1,5 +1,6 @@
 package siam.go.mint.num.siamdailynew.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import siam.go.mint.num.siamdailynew.R;
+import siam.go.mint.num.siamdailynew.ServiceActivity;
 import siam.go.mint.num.siamdailynew.manage.GetAllData;
 import siam.go.mint.num.siamdailynew.manage.MyAlert;
 import siam.go.mint.num.siamdailynew.manage.MyConstant;
@@ -141,6 +143,10 @@ public class MainFragment extends Fragment{
             } else if (passwordStrig.equals(userStrings[6])) {
                 //password true
                 Toast.makeText(getActivity(), "Welcome "+ userStrings[1], Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ServiceActivity.class);
+                intent.putExtra("User",userStrings);
+                getActivity().startActivity(intent);
+                getActivity().finish();  //ถ้ากดออกต้องล็อคอินใหม่
             } else {
                 //password false
                 MyAlert myAlert = new MyAlert(getActivity());
