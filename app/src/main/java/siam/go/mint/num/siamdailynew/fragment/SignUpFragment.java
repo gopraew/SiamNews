@@ -8,10 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import siam.go.mint.num.siamdailynew.R;
 import siam.go.mint.num.siamdailynew.manage.GetAllData;
@@ -78,6 +83,33 @@ public class SignUpFragment extends Fragment {
             String strJSoN = getAllData.get();
             Log.d(tag,"JSON ==> " + strJSoN);
 
+            JSONArray jsonArray = new JSONArray(strJSoN);
+            final String[] facultyStrings = new String[jsonArray.length()];  //จำนวน record ตัวแปรต้องเป็น arr
+            for (int i=0; i<jsonArray.length(); i+=1 ){
+                JSONObject jsonObject = jsonArray.getJSONObject(i); //เป็นตัวชี้
+                facultyStrings[i] = jsonObject.getString("fd_nameth");
+                Log.d(tag, "faculty[" + i + "] ==>" + facultyStrings[i]);
+            }  //for
+
+            ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
+                    getActivity(),
+                    android.R.layout.simple_list_item_1,    // simple list item1 รูปแบบของ pop up เป็นแบบเลือกคณะ
+                    facultyStrings
+            );
+            spinner.setAdapter(stringArrayAdapter);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    //////////////////////////////
+                    facultyString = facultyStrings[i];
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    //////////////////////////////
+                    facultyString = facultyStrings[0];
+                }
+            });
 
         }catch (Exception e){
             Log.d(tag,"e faculty ==> "+ e.toString());
@@ -143,14 +175,31 @@ public class SignUpFragment extends Fragment {
                     MyAlert myAlert = new MyAlert(getActivity());
                     myAlert.myDialog(getString(R.string.title_not_math),
                             getString(R.string.mess_not_mate));
-                }else if(aBoolean){
+                } else if (aBoolean) {
                     //non choose
                     MyAlert myAlert = new MyAlert(getActivity());
-                    myAlert.myDialog(getString(R.string.title_non_choose),getString(R.string.mess_non_choose));
+                    myAlert.myDialog(getString(R.string.title_non_choose), getString(R.string.mess_non_choose));
+                } else {
+                    uploadNewUserToServer();
+
                 }
 
             }   // onClick
         });
+    }
+
+    private void uploadNewUserToServer() {
+
+        //show Log
+        String tag = "22AugV2";
+        Log.d(tag, nameString);
+        Log.d(tag, surnameString);
+        Log.d(tag, gerderString);
+        Log.d(tag, emailString);
+        Log.d(tag, facultyString);
+        Log.d(tag, userString);
+        Log.d(tag, passwordString);
+
     }
 
 
