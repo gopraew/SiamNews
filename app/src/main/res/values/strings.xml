@@ -17,11 +17,11 @@
 
 
     <!--แจ้งเตือน-->
-    <string name="have_space">Have Space</string>
+    <string name="have_space">แจ้งเตือน</string>
     <string name="message_have_space">กรุณากรอกข้อมูล</string>
     <string name="title_not_math">รหัสผ่านไม่ตรงกัน</string>
     <string name="mess_not_mate">กรุณายืนยันรหัสผ่านให้ตรงกัน</string>
-    <string name="title_non_choose">Non choose Gender</string>
-    <string name="mess_non_choose">Please choose Gender</string>
+    <string name="title_non_choose">แจ้งเตือน (เพศ)</string>
+    <string name="mess_non_choose">กรุณาเลือกเพศ</string>
 
 </resources>

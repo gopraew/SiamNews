@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import siam.go.mint.num.siamdailynew.R;
+import siam.go.mint.num.siamdailynew.manage.GetAllData;
 import siam.go.mint.num.siamdailynew.manage.MyAlert;
+import siam.go.mint.num.siamdailynew.manage.MyConstant;
 
 /**
  * Created by Tong on 15/8/2560.
@@ -61,10 +64,29 @@ public class SignUpFragment extends Fragment {
 
 
     private void facultyController() {
-        Spinner spinner = getView().findViewById(R.id.spnFaculty);
+
         //String[]strings=new String[]{};
 
-    }
+        Spinner spinner = getView().findViewById(R.id.spnFaculty);
+        MyConstant myConstant = new MyConstant();
+        String tag = "22AugV1";
+
+        try{
+
+            GetAllData getAllData = new GetAllData(getActivity());
+            getAllData.execute(myConstant.getUrlfacdep());
+            String strJSoN = getAllData.get();
+            Log.d(tag,"JSON ==> " + strJSoN);
+
+
+        }catch (Exception e){
+            Log.d(tag,"e faculty ==> "+ e.toString());
+        }
+
+
+    }  //faculty controller
+
+
 
 
     private void genderController() {
@@ -84,7 +106,6 @@ public class SignUpFragment extends Fragment {
             }
         });
     }
-
 
 
     private void saveController() {
